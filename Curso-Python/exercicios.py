@@ -29,8 +29,7 @@ estado = input("Infome seu estado: ")
 print(f"{nome} tem {idade} anos e mora no estado {estado}")
 
 # Exercicio Estrutura condicionais 
-
-# Exercicio 1
+# Exerciciod 1
 
 temp = float(input("Digite a temperatura em Celsius: "))
 
