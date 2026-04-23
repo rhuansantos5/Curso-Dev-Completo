@@ -64,3 +64,46 @@
 # dicionario["linguagem"] = "Python"
 
 # print(f"Dicionario depois da modificacao: {dicionario}") #{'nome': 'Rhuan', 'estado': 'Minas Gerais', 'altura': 1.69, 'linguagem': 'Python'}
+
+
+# Funções 
+
+
+# def produto(x, y):
+#     resultado = x * y
+#     return resultado
+
+# def soma(x, y):
+#     resultado = x + y
+#     return resultado
+
+
+# multiplicacao = produto(3, 4)
+# sum = soma(4, 4)
+
+# print(f"O resultado é: {multiplicacao}")
+# print(f"O resultado da soma é: {sum}")
+
+# diferenca = multiplicacao - sum
+# print(f"A diferença é: {diferenca}")
+
+
+# def exibir_frase(nome, altura, linguagem):
+#     print(f"{nome} tem {altura}m e programa em {linguagem}")
+
+# nome = input("Infome seu nome: ")
+# altura = float(input("Infome sua altura: "))
+# linguagem = input("Informe a linguage: ")
+
+# exibir_frase(nome, altura, linguagem)
+
+# def diferenca(x, y):
+#     res = x - y
+#     return res
+
+ 
+# res = diferenca(10,20)
+# print(res)
+
+# Escopo global não enxerga o que está no escopo local
+# Escopo local exerga o que está no escopo global
