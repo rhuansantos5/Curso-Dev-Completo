@@ -11,9 +11,3 @@ itens  = [1, 2, 3, 4, 5]
 
 print(invert(itens))
 
-
-# def make_negative( number ):
-    # if number > 0:
-    #     return number * -1
-    # return number 
-    
