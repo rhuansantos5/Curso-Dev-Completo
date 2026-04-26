@@ -16,4 +16,4 @@ print(make_negative(10))
 # Outra maneira
 
 def make_negative( number ):
-    return -abs(number)  # abs retorna o valor absoluto, como tem um (-) antes do abs ele sempre vai retornar um - antes dos numeros 
+    return -abs(number)  # abs retorna o valor absoluto, como tem um (-) antes do abs ele sempre vai retornar um - antes dos numeros  
