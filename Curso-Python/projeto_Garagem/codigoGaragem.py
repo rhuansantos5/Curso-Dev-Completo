@@ -19,6 +19,16 @@ lista_Carros = [
     }
 ]
 
+def encontrar_carro(placa):
+    carro_encontrado = None
+
+    for carro in lista_Carros:
+        if carro["placa"] == placa:
+            carro_encontrado = carro
+            break
+
+    return carro_encontrado
+
 def cadastrar_carros():
     placa = input("Infome a placa do carro: ")
     cor = input("Infome a cor do carro: ")
@@ -41,6 +51,51 @@ def listar_carros():
         print(f"Placa: {carro["placa"]} | Modelo:{carro["modelo"]} | Cor:{carro["cor"]} | Ano:{carro["ano"]}")
     
     print("---------------------------------------------------------")    
+
+def editar_carro():
+    placa = input("Informe a placa do carro que deseja editar: ")
+
+    carro_existente = encontrar_carro(placa)
+
+    if carro_existente == None:
+        print("\nCarro não encontrado com essa placa")
+        return
+
+    dicionario_atualizacao = {
+        "placa": carro_existente["placa"],
+        "cor": carro_existente["cor"],
+        "modelo": carro_existente["modelo"],
+        "ano":  carro_existente["ano"]
+    }
+
+    print("\nPressione ENTER para manter o valor atual.")
+
+    nova_placa = input(f"Nova Placa (Atual: {carro_existente["placa"]}): ")
+    if len(nova_placa) > 0:
+        if encontrar_carro(nova_placa) != None:
+            print("Já existe um carro com essa placa")
+            return
+        
+        dicionario_atualizacao["placa"] = nova_placa
+
+    nova_cor = input(f"Nova cor (Atual: {carro_existente["cor"]}):")
+    if len(nova_cor) > 0: 
+        dicionario_atualizacao["cor"] = nova_cor
+
+    novo_modelo = input(f"Novo modelo (Atual: {carro_existente["modelo"]}):")
+    if len(novo_modelo) > 0: 
+        dicionario_atualizacao["modelo"] = novo_modelo
+
+    novo_ano = input(f"Novo ano (Atual: {carro_existente["ano"]}):")
+    if len(novo_ano) > 0: 
+        dicionario_atualizacao["ano"] = int(novo_ano)
+
+    carro_existente["placa"] = dicionario_atualizacao["placa"]
+    carro_existente["cor"] = dicionario_atualizacao["cor"]
+    carro_existente["modelo"] = dicionario_atualizacao["modelo"]
+    carro_existente["ano"] = dicionario_atualizacao["ano"]         
+
+    print("\nCarro editado com sucesso!!")   
 
 def deletar_carro():
     placa = input("Informe a placa do carro que deseja deletar: ")
@@ -71,7 +126,7 @@ while True:
     elif opcao == "2":
         listar_carros()   
     elif opcao == "3":
-        print("\nAinda vamos implementar essa funcionalidade")
+        editar_carro()
     elif opcao == "4":
         deletar_carro()
     elif opcao == "5":
