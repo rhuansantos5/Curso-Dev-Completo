@@ -23,16 +23,34 @@ def encontrar_carro(placa):
     carro_encontrado = None
 
     for carro in lista_Carros:
-        if carro["placa"] == placa:
+        if carro["placa"].lower() == placa.lower():
             carro_encontrado = carro
             break
 
     return carro_encontrado
 
 def cadastrar_carros():
-    placa = input("Infome a placa do carro: ")
-    cor = input("Infome a cor do carro: ")
-    modelo = input("Infome o modelo do carro: ")
+    placa = input("Infome a placa do carro: ").strip()
+
+    if len(placa) == 0:
+        print("\nO campo placa não pode ser vazio")
+        return
+
+    carro_existente = encontrar_carro(placa)
+    if carro_existente != None:
+        print(f"\nJá existe um carro cadastrado com a placa {placa}")
+        return
+
+    cor = input("Infome a cor do carro: ").strip()
+    if len(cor) == 0:
+        print("\nO campo cor não pode ser vazio")
+        return
+    
+    modelo = input("Infome o modelo do carro: ").strip()
+    if len(modelo) == 0:
+        print("\nO campo modelo não pode ser vazio")
+        return
+    
     ano = int(input("Infome o ano do carro: "))
 
     carro = {
@@ -53,7 +71,7 @@ def listar_carros():
     print("---------------------------------------------------------")    
 
 def editar_carro():
-    placa = input("Informe a placa do carro que deseja editar: ")
+    placa = input("Informe a placa do carro que deseja editar: ").strip()
 
     carro_existente = encontrar_carro(placa)
 
@@ -70,7 +88,7 @@ def editar_carro():
 
     print("\nPressione ENTER para manter o valor atual.")
 
-    nova_placa = input(f"Nova Placa (Atual: {carro_existente["placa"]}): ")
+    nova_placa = input(f"Nova Placa (Atual: {carro_existente["placa"]}): ").strip()
     if len(nova_placa) > 0:
         if encontrar_carro(nova_placa) != None:
             print("Já existe um carro com essa placa")
@@ -78,11 +96,11 @@ def editar_carro():
         
         dicionario_atualizacao["placa"] = nova_placa
 
-    nova_cor = input(f"Nova cor (Atual: {carro_existente["cor"]}):")
+    nova_cor = input(f"Nova cor (Atual: {carro_existente["cor"]}):").strip()
     if len(nova_cor) > 0: 
         dicionario_atualizacao["cor"] = nova_cor
 
-    novo_modelo = input(f"Novo modelo (Atual: {carro_existente["modelo"]}):")
+    novo_modelo = input(f"Novo modelo (Atual: {carro_existente["modelo"]}):").strip()
     if len(novo_modelo) > 0: 
         dicionario_atualizacao["modelo"] = novo_modelo
 
@@ -98,10 +116,10 @@ def editar_carro():
     print("\nCarro editado com sucesso!!")   
 
 def deletar_carro():
-    placa = input("Informe a placa do carro que deseja deletar: ")
+    placa = input("Informe a placa do carro que deseja deletar: ").strip()
 
     for carro in lista_Carros:
-        if carro["placa"] == placa:
+        if carro["placa"].lower() == placa.lower():
             lista_Carros.remove(carro)
             print("\nCarro deletado")
             return
@@ -119,7 +137,7 @@ def exibir_menu():
 while True:
     exibir_menu()
 
-    opcao = input("Escolha uma opção: ")
+    opcao = input("Escolha uma opção: ").strip()
 
     if opcao == "1":
         cadastrar_carros()   
