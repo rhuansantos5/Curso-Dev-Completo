@@ -51,7 +51,11 @@ def cadastrar_carros():
         print("\nO campo modelo não pode ser vazio")
         return
     
-    ano = int(input("Infome o ano do carro: "))
+    try:
+        ano = int(input("Infome o ano do carro: "))
+    except ValueError:
+        print("\nAno inválido. Digite apenas números.")
+        return
 
     carro = {
         "placa" : placa,
@@ -65,6 +69,11 @@ def cadastrar_carros():
 
 def listar_carros():
     print("\n-------------------- Lista de carros --------------------")
+
+    if len(lista_Carros) == 0:
+        print("\nNenhum carro cadastrado.")
+        return
+
     for carro in lista_Carros:
         print(f"Placa: {carro["placa"]} | Modelo:{carro["modelo"]} | Cor:{carro["cor"]} | Ano:{carro["ano"]}")
     
@@ -106,8 +115,12 @@ def editar_carro():
 
     novo_ano = input(f"Novo ano (Atual: {carro_existente["ano"]}):")
     if len(novo_ano) > 0: 
-        dicionario_atualizacao["ano"] = int(novo_ano)
-
+        try:
+            dicionario_atualizacao["ano"] = int(novo_ano)
+        except ValueError:
+            print("\nAno inválido. Alterações ignoradas.")
+            return
+        
     carro_existente["placa"] = dicionario_atualizacao["placa"]
     carro_existente["cor"] = dicionario_atualizacao["cor"]
     carro_existente["modelo"] = dicionario_atualizacao["modelo"]
