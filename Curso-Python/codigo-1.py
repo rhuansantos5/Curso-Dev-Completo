@@ -107,3 +107,6 @@
 
 # Escopo global não enxerga o que está no escopo local
 # Escopo local exerga o que está no escopo global
+
+#Biblioteca Datetime
+
