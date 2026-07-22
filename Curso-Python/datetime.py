@@ -30,4 +30,4 @@ elif (media >= 4.0) and (media < 7):
 
 
 else:
-    print("Reprou direto.")
+    print("Reprovou direto.")
